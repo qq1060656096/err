@@ -19,6 +19,10 @@ func NewWebErrWithCause(statusCode int, message string, code int, previous error
 	}
 }
 
+func (e *WebErr) Error() string {
+	return e.Err.Error()
+}
+
 func (e *WebErr) StatusCode() int {
 	return e.statusCode
 }
