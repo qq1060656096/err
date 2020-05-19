@@ -6,38 +6,18 @@ type Err struct {
 	previous error
 	message string
 	code int
+	statusCode int
+	isWebErr bool
 	file string
 	line int
 }
 
-func NewErr(message string, code int) *Err {
-	return &Err{
-		message: message,
-		code: code,
-	}
-}
-
-func NewErrWithCause(message string, code int, previous error) *Err {
-	return &Err{
-		previous: previous,
-		message: message,
-		code: code,
-	}
-}
-
-func CopyErr(err Err) *Err {
-	newErr := err
-	return &newErr
-}
-
-func CopyErrWithCause(err Err, previous error) *Err {
-	newErr := err
-	newErr.previous = previous
-	return &newErr
-}
-
 func (e *Err) Error() string {
 	return e.message
+}
+
+func (e *Err) setPrevious(err error) {
+	e.previous = err
 }
 
 func (e *Err) Previous() error {
@@ -50,6 +30,14 @@ func (e *Err) Message() string {
 
 func (e *Err) Code() int {
 	return e.code
+}
+
+func (e *Err) StatusCode() int {
+	return e.statusCode
+}
+
+func (e *Err) IsWebErr() bool {
+	return e.isWebErr
 }
 
 func (e *Err) SetLocation() {

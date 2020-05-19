@@ -44,4 +44,5 @@ func TestNewWebErrWithCause(t *testing.T) {
 	err.isWebErr = true
 	err.previous = causeErr
 	assert.Equal(t, err, *nErr)
+	assert.Equal(t, true, nErr.IsWebErr())
 }
