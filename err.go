@@ -3,13 +3,13 @@ package err
 import "runtime"
 
 type Err struct {
-	previous error
-	message string
-	code int
+	previous   error
+	message    string
+	code       int
 	statusCode int
-	isWebErr bool
-	file string
-	line int
+	isWebErr   bool
+	file       string
+	line       int
 }
 
 func (e *Err) Error() string {
@@ -53,4 +53,3 @@ func (e *Err) SetRawLocation(callDepth int) {
 func (e *Err) Location() (file string, line int) {
 	return e.file, e.line
 }
-

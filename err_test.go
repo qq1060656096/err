@@ -2,9 +2,9 @@ package err
 
 import (
 	"fmt"
+	"github.com/stretchr/testify/assert"
 	"runtime"
 	"testing"
-	"github.com/stretchr/testify/assert"
 )
 
 func TestErr_SetLocation(t *testing.T) {
